@@ -1,0 +1,5 @@
+package com.cb.selenium_cb.base;
+
+public class TestBase {
+
+}
