@@ -1,9 +1,5 @@
 Manifest-Version: 1.0
-<<<<<<< HEAD
-Build-Jdk-Spec: 21
-=======
 Built-By: Suraj_Dabhade
 Build-Jdk: 17.0.3
->>>>>>> 28dfc5e1ed605cd10e74cefa514a786ef43fd412
 Created-By: Maven Integration for Eclipse
 
