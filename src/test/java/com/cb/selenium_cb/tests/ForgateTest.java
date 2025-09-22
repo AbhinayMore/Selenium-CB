@@ -27,20 +27,20 @@ public class ForgateTest extends TestBase {
         );
     }
 
-//    @Test
-//    public void invalidEmailForgotPasswordTest() {
-//        driver.get("https://nell.nellinfotech.com/auth/recoverpw?token=nell");  // adjust URL if different
-//
-//        ForgatePage forgotPage = new ForgatePage(driver);
-//
-//        // Use an invalid email
-//        forgotPage.resetPassword("wrongEmail@test.com");
-//
-//        // Assert error message
-//        String error = forgotPage.getErrorMessage();
-//        Assertions.assertTrue(
-//            error.contains("Error!"),
-//            "Error message not displayed correctly!"
-//        );
-//    }
+    @Test
+    public void invalidEmailForgotPasswordTest() {
+        driver.get("https://nell.nellinfotech.com/auth/recoverpw?token=nell");  // adjust URL if different
+
+        ForgatePage forgotPage = new ForgatePage(driver);
+
+        // Use an invalid email
+        forgotPage.resetPassword("wrongEmail@test.com");
+
+        // Assert error message
+        String error = forgotPage.getErrorMessage();
+        Assertions.assertTrue(
+            error.contains("Error!"),
+            "Error message not displayed correctly!"
+        );
+    }
 }
