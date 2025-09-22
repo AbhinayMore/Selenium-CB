@@ -1,28 +1,34 @@
 package com.cb.selenium_cb;
 
+import com.cb.selenium_cb.base.TestBase;
 import org.junit.jupiter.api.Test;
+<<<<<<< HEAD
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 
 public class CbTest {
+=======
+>>>>>>> 28dfc5e1ed605cd10e74cefa514a786ef43fd412
 
+public class CbTest extends TestBase {
 
-    @Test
-    public void openGoogle() {
-        // Set ChromeDriver path
-        System.setProperty("webdriver.chrome.driver", "C:/drivers/chromedriver.exe");
-
-        WebDriver driver = new ChromeDriver();
-        driver.get("https://cb.nellinfotech.com");
-
-        System.out.println("Page Title is: " + driver.getTitle());
-
-        driver.quit();
-        
-       
-    }
+//    @Test
+//<<<<<<< HEAD
+//    public void openGoogle() {
+//        // Set ChromeDriver path
+//        System.setProperty("webdriver.chrome.driver", "C:/drivers/chromedriver.exe");
+//
+//        WebDriver driver = new ChromeDriver();
+//        driver.get("https://cb.nellinfotech.com");
+//
+//        System.out.println("Page Title is: " + driver.getTitle());
+//
+//        driver.quit();
+//        
+//       
+//    }
     @Test
     public void testForgotPassword() {
         // Set ChromeDriver path
@@ -47,6 +53,10 @@ public class CbTest {
         Thread.sleep(2000);
        
         driver.quit();
+=======
+    public void verifyTitle() {
+        System.out.println("✅ Page Title is: " + driver.getTitle());
+>>>>>>> 28dfc5e1ed605cd10e74cefa514a786ef43fd412
     }
 }
     
