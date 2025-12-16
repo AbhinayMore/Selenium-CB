@@ -7,6 +7,6 @@ public class CbTest extends TestBase {
 
 	@Test
 	public void verifyTitle() {
-		System.out.println("✅ Page Title is: " + driver.getTitle());
+		System.out.println("Page Title is: " + driver.getTitle());
 	}
 }
