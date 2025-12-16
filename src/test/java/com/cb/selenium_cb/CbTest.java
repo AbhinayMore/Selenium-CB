@@ -5,8 +5,8 @@ import org.junit.jupiter.api.Test;
 
 public class CbTest extends TestBase {
 
-    @Test
-    public void verifyTitle() {
-        System.out.println("✅ Page Title is: " + driver.getTitle());
-    }
+	@Test
+	public void verifyTitle() {
+		System.out.println("✅ Page Title is: " + driver.getTitle());
+	}
 }

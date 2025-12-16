@@ -9,16 +9,17 @@ public class SignupTest extends TestBase {
 
     @Test
     public void testUserCanSignup() {
+    	driver.get("https://cb.nellinfotech.com/auth/sign-up");
         // pass the WebDriver from TestBase
         SignupPage signup = new SignupPage(driver);
 
         // fill out the form
-        signup.enterName("Mari");
-        signup.enterLastName("Smith");
-        signup.enterEmail("john" + System.currentTimeMillis() + "@example.com");
-        signup.enterContactNumber("9876543210");
+        signup.enterName("Sachin");
+        signup.enterLastName("Tendulkar");
+        signup.enterEmail("sachin" + System.currentTimeMillis() + "@example.com");
+        signup.enterContactNumber("9290853419");
         signup.enterNoOfYearsInBusiness("5");
-//        signup.enterConfirmPassword("Password123");
+//      signup.enterConfirmPassword("Password123");
         // signup.acceptTerms();
 
         // submit
@@ -26,8 +27,10 @@ public class SignupTest extends TestBase {
 
         // assert success
         Assertions.assertTrue(
-                signup.getSuccessMessage().contains("successfully registered"),
+                signup.getSuccessMessage().contains("Sign up successful!!"),
                 "Expected success message not found!"
         );
+        
+        System.out.println(" Test executed successfully — Sign up successful!!");
     }
 }

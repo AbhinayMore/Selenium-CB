@@ -10,16 +10,22 @@ public class SignupPage {
     private WebDriver driver;
     private WebDriverWait wait;
 
-    // Locators (fixed)
-    private By signupbtn        = By.xpath ("//*[@id=\"root\"]/div/section/div[2]/div/div[2]/div/div[2]/form/div[4]/span/a");
-    private By nameInput        = By.id("fname");
-    private By lastNameInput    = By.id("lname");
-    private By emailInput       = By.id("email");
-    private By contactNumber    = By.id("ccno");
-    private By noOfYears        = By.id("no_of_years_in_business");
-//    private By confirmPassword  = By.id("confirm_password"); // adjust to real id
-    private By signupButton     = By.xpath("//*[@id='root']/div/div/section/div[2]/div/div[2]/div/div[3]/a[2]");
-    private By successMessage   = By.xpath("//*[@id='root']/div/div/section/div[2]/div/div[2]/div/div[2]/div/div[2]");
+    // Locators
+    private By nameInput = By.id("fname");
+    private By lastNameInput = By.id("lname");
+    private By emailInput = By.id("email");
+    private By contactNumber = By.id("ccno");
+    private By noOfYears = By.id("no_of_years_in_business");
+    private By submitButton = By.xpath("//*[@id='root']/div/div/section/div[2]/div/div[2]/div/div[3]/a[2]");
+
+    // ✅ existing success message locator
+    private By successMessage = By.xpath("//*[@id=\"root\"]/div/div[2]/div[2]");
+
+    // ✅ new error message locator (adjust to your real markup)
+    // e.g. if your page shows: <div class="error">…</div>
+ // Replace the generic CSS with your actual XPath
+    private By errorMessage = By.xpath("//*[@id=\"root\"]/div/div/section/div[2]/div/div[2]/div/div[2]/div/div[2]");
+
 
     public SignupPage(WebDriver driver) {
         this.driver = driver;
@@ -27,34 +33,55 @@ public class SignupPage {
     }
 
     public void enterName(String name) {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(nameInput)).sendKeys(name);
+        WebElement el = wait.until(ExpectedConditions.visibilityOfElementLocated(nameInput));
+        el.clear();
+        el.sendKeys(name);
     }
 
     public void enterLastName(String lname) {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(lastNameInput)).sendKeys(lname);
+        WebElement el = wait.until(ExpectedConditions.visibilityOfElementLocated(lastNameInput));
+        el.clear();
+        el.sendKeys(lname);
     }
 
     public void enterEmail(String email) {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(emailInput)).sendKeys(email);
+        WebElement el = wait.until(ExpectedConditions.visibilityOfElementLocated(emailInput));
+        el.clear();
+        el.sendKeys(email);
     }
 
     public void enterContactNumber(String number) {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(contactNumber)).sendKeys(number);
+        WebElement el = wait.until(ExpectedConditions.visibilityOfElementLocated(contactNumber));
+        el.clear();
+        el.sendKeys(number);
     }
 
     public void enterNoOfYearsInBusiness(String years) {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(noOfYears)).sendKeys(years);
+        WebElement el = wait.until(ExpectedConditions.visibilityOfElementLocated(noOfYears));
+        el.clear();
+        el.sendKeys(years);
     }
 
-//    public void enterConfirmPassword(String password) {
-//        wait.until(ExpectedConditions.visibilityOfElementLocated(confirmPassword)).sendKeys(password);
-//    }
-
     public void clickSignup() {
-        wait.until(ExpectedConditions.elementToBeClickable(signupButton)).click();
+        wait.until(ExpectedConditions.elementToBeClickable(submitButton)).click();
     }
 
     public String getSuccessMessage() {
-        return wait.until(ExpectedConditions.visibilityOfElementLocated(successMessage)).getText();
+        try {
+            WebElement el = wait.until(ExpectedConditions.visibilityOfElementLocated(successMessage));
+            return el.getText();
+        } catch (TimeoutException e) {
+            return ""; // no success message visible
+        }
+    }
+
+    /** ✅ new method for negative tests */
+    public String getErrorMessage() {
+        try {
+            WebElement el = wait.until(ExpectedConditions.visibilityOfElementLocated(errorMessage));
+            return el.getText();
+        } catch (TimeoutException e) {
+            return ""; // no error message visible
+        }
     }
 }
